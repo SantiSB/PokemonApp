@@ -2,8 +2,10 @@
   "extends": [
     "next",
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
+  "plugins": ["prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,6 +15,7 @@
   },
   "rules": {
     "@typescript-eslint/no-unused-vars": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "prettier/prettier": "error"
   }
 }
