@@ -21,7 +21,7 @@ export default function PokemonsList() {
             </h5>
             <h5>
               <span className="text-gray-500">Favorite Pokemons: </span>
-              <span className="dark:text-white">{favorites.size}</span>
+              <span className="dark:text-white">{favorites.length}</span>
             </h5>
           </div>
         </div>
@@ -73,8 +73,8 @@ export default function PokemonsList() {
                   </td>
                   <td className="px-4 py-2">
                     <button
-                      onClick={() => toggleFavorite(pokemon.id)}
-                      className={`text-lg ${favorites.has(pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                      onClick={() => toggleFavorite(pokemon)}
+                      className={`text-lg ${favorites.includes(pokemon) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
                     >
                       <FavoriteIcon />
                     </button>

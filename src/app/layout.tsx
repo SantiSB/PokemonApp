@@ -23,7 +23,7 @@ export default function RootLayout({
           className={`${inter.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50`}
         >
           <Header />
-          <div className="mt-16"></div>
+          <div className="mt-20"></div>
           {children}
         </body>
       </ThemeProvider>

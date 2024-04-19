@@ -33,8 +33,8 @@ export const usePokemonList = () => {
   )
 
   const toggleFavorite = useCallback(
-    (pokemonId: number) => {
-      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemonId })
+    (pokemon: Pokemon) => {
+      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon })
     },
     [dispatch],
   )
