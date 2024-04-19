@@ -1,4 +1,32 @@
+'use client'
+import { fetchPokemonList } from '@/utils/pokemonService'
+import { useEffect, useState } from 'react'
+
 export default function PokemonsList() {
+  const [pokemonList, setPokemonList] = useState<
+    {
+      name: string
+      url: string
+    }[]
+  >([])
+
+  useEffect(() => {
+    const loadPokemon = async () => {
+      const data = await fetchPokemonList({ page: 1, limit: 10 })
+      const mappedData = data.results.map(
+        (pokemon: { name: string; url: string }) => {
+          const id = pokemon.url.split('/').filter(Boolean).pop()
+          return {
+            ...pokemon,
+            id: id,
+          }
+        },
+      )
+      setPokemonList(mappedData)
+    }
+    loadPokemon()
+  }, [])
+
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
       <div className="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
@@ -41,29 +69,19 @@ export default function PokemonsList() {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900">
-                <th
-                  scope="row"
-                  className="px-4 py-2 font-medium text-primary-700 whitespace-nowrap dark:text-primary-50"
+              {pokemonList.map((pokemon: { name: string; url: string }) => (
+                <tr
+                  key={pokemon.name}
+                  className="border-b dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900"
                 >
-                  Pikachu
-                </th>
-                <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
-                  Static, Lightning-rod
-                </td>
-                <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
-                  4
-                </td>
-                <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
-                  60
-                </td>
-                <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
-                  112
-                </td>
-                <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
-                  Electric
-                </td>
-              </tr>
+                  <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
+                    {pokemon.name}
+                  </td>
+                  <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
+                    {pokemon.url}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           {/* Pagination */}
