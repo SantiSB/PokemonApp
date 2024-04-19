@@ -1,39 +1,13 @@
 'use client'
-import { usePokemonContext } from '@/state/PokemonContext'
 import { Pokemon } from '@/types/pokemonTypes'
-import { fetchPokemonDetails, fetchPokemonList } from '@/utils/pokemonService'
-import { useEffect } from 'react'
+import { usePokemonList } from '@/hooks/usePokemonList'
 import FavoriteIcon from './assets/FavoriteIcon'
 
 export default function PokemonsList() {
-  const { state, dispatch } = usePokemonContext()
+  const { pokemons, total, page, favorites, handlePageChange, toggleFavorite } =
+    usePokemonList()
 
-  useEffect(() => {
-    const loadPokemon = async () => {
-      const { page } = state
-      const data = await fetchPokemonList({ page, limit: 20 })
-      const promises = data.results.map((pokemon: { url: string }) =>
-        fetchPokemonDetails(pokemon.url).then((detail) => ({
-          ...detail,
-          url: pokemon.url,
-        })),
-      )
-      const details = await Promise.all(promises)
-
-      dispatch({ type: 'SET_POKEMONS', payload: details })
-      dispatch({ type: 'SET_TOTAL', payload: data.count })
-    }
-
-    loadPokemon()
-  }, [state.page, dispatch])
-
-  function handlePageChange(newPage: number) {
-    dispatch({ type: 'SET_PAGE', payload: newPage })
-  }
-
-  const totalPages = Math.ceil(state.total / 20)
-
-  console.log(state)
+  const totalPages = Math.ceil(total / 20)
 
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
@@ -43,11 +17,11 @@ export default function PokemonsList() {
           <div className="flex items-center flex-1 space-x-4">
             <h5>
               <span className="text-gray-500">All Pokemons: </span>
-              <span className="dark:text-white">{state.total}</span>
+              <span className="dark:text-white">{total}</span>
             </h5>
             <h5>
               <span className="text-gray-500">Favorite Pokemons: </span>
-              <span className="dark:text-white">{state.favorites.size}</span>
+              <span className="dark:text-white">{favorites.size}</span>
             </h5>
           </div>
         </div>
@@ -77,7 +51,7 @@ export default function PokemonsList() {
               </tr>
             </thead>
             <tbody>
-              {state.pokemons.map((pokemon: Pokemon) => (
+              {pokemons.map((pokemon: Pokemon) => (
                 <tr
                   key={pokemon.id}
                   className="border-b dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900"
@@ -99,13 +73,8 @@ export default function PokemonsList() {
                   </td>
                   <td className="px-4 py-2">
                     <button
-                      onClick={() =>
-                        dispatch({
-                          type: 'TOGGLE_FAVORITE',
-                          payload: pokemon.id,
-                        })
-                      }
-                      className={`text-lg ${state.favorites.has(pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                      onClick={() => toggleFavorite(pokemon.id)}
+                      className={`text-lg ${favorites.has(pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
                     >
                       <FavoriteIcon />
                     </button>
@@ -122,12 +91,12 @@ export default function PokemonsList() {
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
               Showing{' '}
               <span className="font-semibold text-gray-900 dark:text-white">
-                {Math.min((state.page - 1) * 20 + 1, state.total)}-
-                {Math.min(state.page * 20, state.total)}
+                {Math.min((page - 1) * 20 + 1, total)}-
+                {Math.min(page * 20, total)}
               </span>{' '}
               of{' '}
               <span className="font-semibold text-gray-900 dark:text-white">
-                {state.total}
+                {total}
               </span>
             </span>
 
@@ -139,17 +108,15 @@ export default function PokemonsList() {
               <ul className="inline-flex items-stretch -space-x-px">
                 <li>
                   <button
-                    onClick={() =>
-                      handlePageChange(Math.max(1, state.page - 1))
-                    }
-                    disabled={state.page === 1}
+                    onClick={() => handlePageChange(Math.max(1, page - 1))}
+                    disabled={page === 1}
                     className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                   >
                     {'<'}
                   </button>
                 </li>
                 {/* Dynamic pagination with ellipses */}
-                {state.page > 2 && (
+                {page > 2 && (
                   <li>
                     <button
                       onClick={() => handlePageChange(1)}
@@ -159,12 +126,12 @@ export default function PokemonsList() {
                     </button>
                   </li>
                 )}
-                {state.page > 3 && (
+                {page > 3 && (
                   <li>
                     <span className="px-3 py-2">...</span>
                   </li>
                 )}
-                {Array.from({ length: 3 }, (_, i) => state.page - 1 + i)
+                {Array.from({ length: 3 }, (_, i) => page - 1 + i)
                   .filter(
                     (pageNumber) => pageNumber >= 1 && pageNumber <= totalPages,
                   )
@@ -172,18 +139,18 @@ export default function PokemonsList() {
                     <li key={pageNumber}>
                       <button
                         onClick={() => handlePageChange(pageNumber)}
-                        className={`flex items-center justify-center px-3 py-2 text-sm leading-tight ${state.page === pageNumber ? 'text-primary-600 bg-primary-50 border-primary-300 hover:bg-primary-100 hover:text-primary-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'} dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                        className={`flex items-center justify-center px-3 py-2 text-sm leading-tight ${page === pageNumber ? 'text-primary-600 bg-primary-50 border-primary-300 hover:bg-primary-100 hover:text-primary-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'} dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
                       >
                         {pageNumber}
                       </button>
                     </li>
                   ))}
-                {state.page < totalPages - 2 && (
+                {page < totalPages - 2 && (
                   <li>
                     <span className="px-3 py-2">...</span>
                   </li>
                 )}
-                {state.page < totalPages - 1 && (
+                {page < totalPages - 1 && (
                   <li>
                     <button
                       onClick={() => handlePageChange(totalPages)}
@@ -196,9 +163,9 @@ export default function PokemonsList() {
                 <li>
                   <button
                     onClick={() =>
-                      handlePageChange(Math.min(totalPages, state.page + 1))
+                      handlePageChange(Math.min(totalPages, page + 1))
                     }
-                    disabled={state.page === totalPages}
+                    disabled={page === totalPages}
                     className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                   >
                     {'>'}
