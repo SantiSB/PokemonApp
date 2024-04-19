@@ -3,6 +3,7 @@ import { usePokemonContext } from '@/state/PokemonContext'
 import { Pokemon } from '@/types/pokemonTypes'
 import { fetchPokemonDetails, fetchPokemonList } from '@/utils/pokemonService'
 import { useEffect } from 'react'
+import FavoriteIcon from './assets/FavoriteIcon'
 
 export default function PokemonsList() {
   const { state, dispatch } = usePokemonContext()
@@ -30,9 +31,9 @@ export default function PokemonsList() {
     dispatch({ type: 'SET_PAGE', payload: newPage })
   }
 
-  const totalPages = Math.ceil(state.total / 10)
+  const totalPages = Math.ceil(state.total / 20)
 
-  console.log(state.pokemons)
+  console.log(state)
 
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
@@ -42,11 +43,11 @@ export default function PokemonsList() {
           <div className="flex items-center flex-1 space-x-4">
             <h5>
               <span className="text-gray-500">All Pokemons: </span>
-              <span className="dark:text-white">123456</span>
+              <span className="dark:text-white">{state.total}</span>
             </h5>
             <h5>
               <span className="text-gray-500">Favorite Pokemons: </span>
-              <span className="dark:text-white">10</span>
+              <span className="dark:text-white">{state.favorites.size}</span>
             </h5>
           </div>
         </div>
@@ -70,6 +71,9 @@ export default function PokemonsList() {
                 <th scope="col" className="px-4 py-3 text-white">
                   Base Experience
                 </th>
+                <th scope="col" className="px-4 py-3 text-white">
+                  Favorite
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -92,6 +96,19 @@ export default function PokemonsList() {
                   </td>
                   <td className="px-4 py-2 text-primary-800 dark:text-primary-200">
                     {pokemon.base_experience}
+                  </td>
+                  <td className="px-4 py-2">
+                    <button
+                      onClick={() =>
+                        dispatch({
+                          type: 'TOGGLE_FAVORITE',
+                          payload: pokemon.id,
+                        })
+                      }
+                      className={`text-lg ${state.favorites.has(pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                    >
+                      <FavoriteIcon />
+                    </button>
                   </td>
                 </tr>
               ))}
