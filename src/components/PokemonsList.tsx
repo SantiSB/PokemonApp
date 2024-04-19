@@ -10,7 +10,7 @@ export default function PokemonsList() {
   useEffect(() => {
     const loadPokemon = async () => {
       const { page } = state
-      const data = await fetchPokemonList({ page, limit: 10 })
+      const data = await fetchPokemonList({ page, limit: 20 })
       const promises = data.results.map((pokemon: { url: string }) =>
         fetchPokemonDetails(pokemon.url).then((detail) => ({
           ...detail,
@@ -105,13 +105,15 @@ export default function PokemonsList() {
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
               Showing{' '}
               <span className="font-semibold text-gray-900 dark:text-white">
-                1-20
+                {Math.min((state.page - 1) * 20 + 1, state.total)}-
+                {Math.min(state.page * 20, state.total)}
               </span>{' '}
               of{' '}
               <span className="font-semibold text-gray-900 dark:text-white">
-                123456
+                {state.total}
               </span>
             </span>
+
             {/* Pagination */}
             <div
               className="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0"
