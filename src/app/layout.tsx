@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Orbitron } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/state/ThemeContext'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Orbitron({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Pokemon App',
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvider>
         <body
-          className={`${inter.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50`}
+          className={`${font.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50 min-h-screen min-w-full m-0 p-0 overflow-hidden flex flex-col`}
         >
           <Header />
           <div className="mt-20"></div>

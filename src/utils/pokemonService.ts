@@ -1,5 +1,3 @@
-// services/pokemonService.ts
-
 import { Pokemon } from '@/types/pokemonTypes'
 
 const API_URL = 'https://pokeapi.co/api/v2/pokemon'
@@ -29,6 +27,20 @@ export const fetchPokemonList = async ({
 }
 
 export const fetchPokemonDetails = async (url: string): Promise<Pokemon> => {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    return (await response.json()) as Pokemon
+  } catch (error) {
+    console.error('Error fetching data: ', error)
+    throw error
+  }
+}
+
+export const fetchPokemonById = async (id: string): Promise<Pokemon> => {
+  const url = `${API_URL}/${id}`
   try {
     const response = await fetch(url)
     if (!response.ok) {

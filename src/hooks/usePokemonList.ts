@@ -10,9 +10,10 @@ export const usePokemonList = () => {
     const { page } = state
     const data = await fetchPokemonList({ page, limit: 20 })
     const promises = data.results.map((pokemon: Pokemon) =>
-      fetchPokemonDetails(pokemon.url).then((detail) => ({
+      fetchPokemonDetails(pokemon.url ?? '')?.then((detail) => ({
         ...detail,
         url: pokemon.url,
+        image: detail.sprites?.front_default,
       })),
     )
     const details = await Promise.all(promises)
@@ -34,7 +35,7 @@ export const usePokemonList = () => {
 
   const toggleFavorite = useCallback(
     (pokemon: Pokemon) => {
-      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon })
+      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon.id })
     },
     [dispatch],
   )
