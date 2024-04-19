@@ -1,5 +1,10 @@
 import MainSection from '@/components/MainSection'
+import { PokemonProvider } from '@/state/PokemonContext'
 
 export default function Home() {
-  return <MainSection />
+  return (
+    <PokemonProvider>
+      <MainSection />
+    </PokemonProvider>
+  )
 }
