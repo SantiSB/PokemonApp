@@ -69,7 +69,11 @@ export default function PokemonsList() {
                       </button>
                     </td>
                     <td className="flex justify-center px-3 py-2 text-primary-800 dark:text-primary-200">
-                      <Link href={`/pokemon/${pokemon.id}`}>
+                      <Link
+                        href={`/pokemon/${pokemon.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Image
                           src={pokemon.image ? pokemon.image : '/pokeball.svg'}
                           alt={pokemon.name ?? ''}
@@ -79,10 +83,20 @@ export default function PokemonsList() {
                       </Link>
                     </td>
                     <td className="px-3 py-2 text-primary-800 dark:text-primary-200">
-                      <Link href={`/pokemon/${pokemon.id}`}>{pokemon.id}</Link>
+                      <Link
+                        href={`/pokemon/${pokemon.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {pokemon.id}
+                      </Link>
                     </td>
                     <td className="px-3 py-2 text-primary-800 dark:text-primary-200">
-                      <Link href={`/pokemon/${pokemon.id}`}>
+                      <Link
+                        href={`/pokemon/${pokemon.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {pokemon.name}
                       </Link>
                     </td>
