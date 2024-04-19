@@ -6,7 +6,7 @@ import Link from 'next/link'
 const font = Press_Start_2P({ weight: '400', subsets: ['latin'] })
 
 const links = [
-  { href: '#favorites', text: 'Favorites' },
+  { href: '/favorites', text: 'Favorites' },
   { href: '#login', text: 'Login' },
 ]
 
@@ -25,13 +25,13 @@ export default function Header() {
       </Link>
       <nav className="flex flex-row gap-x-4 text-xs sm:text-base">
         {links.map((link) => (
-          <a
+          <Link
             key={link.href}
             className=" hover:text-primary-200 dark:hover:text-primary-700 focus:text-primary-300 dark:focus:text-primary-800 transition-colors font-semibold"
             href={link.href}
           >
             {link.text}
-          </a>
+          </Link>
         ))}
       </nav>
       <ThemeToggleButton />

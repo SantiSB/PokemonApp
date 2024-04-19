@@ -3,6 +3,7 @@ import { Orbitron } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/state/ThemeContext'
+import { PokemonProvider } from '@/state/PokemonContext'
 
 const font = Orbitron({ subsets: ['latin'] })
 
@@ -19,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider>
-        <body
-          className={`${font.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50 min-h-screen min-w-full m-0 p-0 overflow-hidden flex flex-col`}
-        >
-          <Header />
-          <div className="mt-20"></div>
-          {children}
-        </body>
+        <PokemonProvider>
+          <body
+            className={`${font.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50 min-h-screen min-w-full m-0 p-0 overflow-hidden flex flex-col`}
+          >
+            <Header />
+            <div className="mt-20"></div>
+            {children}
+          </body>
+        </PokemonProvider>
       </ThemeProvider>
     </html>
   )

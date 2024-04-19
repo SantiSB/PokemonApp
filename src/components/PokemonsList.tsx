@@ -11,6 +11,8 @@ export default function PokemonsList() {
 
   const totalPages = Math.ceil(total / 20)
 
+  console.log('favorites', favorites)
+
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
       <div className="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
@@ -63,7 +65,7 @@ export default function PokemonsList() {
                     <td className="px-3 py-2">
                       <button
                         onClick={() => toggleFavorite(pokemon)}
-                        className={`text-lg ${favorites.includes(pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                        className={`text-lg ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
                       >
                         <FavoriteIcon />
                       </button>

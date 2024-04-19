@@ -1,10 +1,5 @@
-import MainSection from '@/components/MainSection'
-import { PokemonProvider } from '@/state/PokemonContext'
+import MainSection from '@/components/sections/MainSection'
 
 export default function Home() {
-  return (
-    <PokemonProvider>
-      <MainSection />
-    </PokemonProvider>
-  )
+  return <MainSection />
 }

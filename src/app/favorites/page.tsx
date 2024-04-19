@@ -1,5 +1,5 @@
-import FavoritesList from '@/components/FavoritesList'
+import FavoritesSection from '@/components/sections/FavoritesSection'
 
 export default function Favorites() {
-  return <FavoritesList />
+  return <FavoritesSection />
 }

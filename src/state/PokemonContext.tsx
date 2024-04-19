@@ -6,14 +6,14 @@ type State = {
   pokemons: Pokemon[]
   page: number
   total: number
-  favorites: number[]
+  favorites: Pokemon[]
 }
 
 type Action =
   | { type: 'SET_POKEMONS'; payload: Pokemon[] }
   | { type: 'SET_PAGE'; payload: number }
   | { type: 'SET_TOTAL'; payload: number }
-  | { type: 'TOGGLE_FAVORITE'; payload: number }
+  | { type: 'TOGGLE_FAVORITE'; payload: Pokemon }
 
 const initialState: State = {
   pokemons: [],
@@ -32,14 +32,14 @@ const pokemonReducer = (state: State, action: Action): State => {
       return { ...state, total: action.payload }
     case 'TOGGLE_FAVORITE':
       const { favorites } = state
-      const pokemonId = action.payload
-      const index = favorites.indexOf(pokemonId)
+      const pokemon = action.payload
+      const index = favorites.findIndex((fav) => fav.id === pokemon.id)
       const newFavorites = [...favorites]
 
       if (index !== -1) {
         newFavorites.splice(index, 1)
       } else {
-        newFavorites.push(pokemonId)
+        newFavorites.push(pokemon)
       }
       return { ...state, favorites: newFavorites }
     default:
