@@ -1,29 +1,40 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/state/AuthContext.jsx'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router = useRouter()
+  const { login, isLoggedIn } = useAuth()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/pokemons')
+    } else {
+      setLoading(false)
+    }
+  }, [isLoggedIn, router])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const users = JSON.parse(localStorage.getItem('users') ?? '') || []
-    const user = users.find(
-      (user: { email: string; password: string }) =>
-        user.email === email && user.password === password,
-    )
-
-    if (user) {
-      alert('Login successful!')
-    } else {
-      alert('Invalid email or password!')
-    }
+    login(email, password)
 
     setEmail('')
     setPassword('')
+
+    if (localStorage.getItem('user')) {
+      router.push('/pokemons')
+    }
+  }
+
+  if (loading) {
+    return <div>Loading...</div>
   }
 
   return (

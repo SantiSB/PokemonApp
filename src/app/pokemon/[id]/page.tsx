@@ -1,14 +1,10 @@
 'use client'
-import FavoriteIcon from '@/components/assets/FavoriteIcon'
 import usePokemon from '@/hooks/usePokemon'
-import { usePokemonList } from '@/hooks/usePokemonList'
-import { Pokemon } from '@/types/pokemonTypes'
 import Image from 'next/image'
 
 export default function PokemonDetail({ params }: { params: { id: string } }) {
   const { id } = params
   const { pokemon, isLoading, error } = usePokemon(id)
-  const { favorites, toggleFavorite } = usePokemonList()
 
   if (isLoading) return <p>Loading...</p>
   if (error) return <p>{error}</p>

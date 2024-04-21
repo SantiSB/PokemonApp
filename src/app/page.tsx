@@ -1,5 +1,28 @@
-import MainSection from '@/components/sections/MainSection'
+'use client'
 
-export default function Home() {
-  return <MainSection />
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/state/AuthContext.jsx'
+
+export default function Index() {
+  const router = useRouter()
+  const { isLoggedIn } = useAuth()
+
+  useEffect(() => {
+    const localIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+
+    if (isLoggedIn || localIsLoggedIn) {
+      console.log('Logged!')
+      router.push('/pokemons')
+    } else {
+      console.log('Not Logged!')
+      router.push('/login')
+    }
+  }, [isLoggedIn, router])
+
+  return (
+    <div>
+      <h1>Loading</h1>
+    </div>
+  )
 }
