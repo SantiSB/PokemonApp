@@ -7,19 +7,21 @@ type State = {
   page: number
   total: number
   favorites: Pokemon[]
+  filter: string
 }
-
 type Action =
   | { type: 'SET_POKEMONS'; payload: Pokemon[] }
   | { type: 'SET_PAGE'; payload: number }
   | { type: 'SET_TOTAL'; payload: number }
   | { type: 'TOGGLE_FAVORITE'; payload: Pokemon }
+  | { type: 'SET_FILTER'; payload: string }
 
 const initialState: State = {
   pokemons: [],
   page: 1,
   total: 0,
   favorites: [],
+  filter: '',
 }
 
 const pokemonReducer = (state: State, action: Action): State => {
@@ -31,17 +33,14 @@ const pokemonReducer = (state: State, action: Action): State => {
     case 'SET_TOTAL':
       return { ...state, total: action.payload }
     case 'TOGGLE_FAVORITE':
-      const { favorites } = state
-      const pokemon = action.payload
-      const index = favorites.findIndex((fav) => fav.id === pokemon.id)
-      const newFavorites = [...favorites]
-
-      if (index !== -1) {
-        newFavorites.splice(index, 1)
-      } else {
-        newFavorites.push(pokemon)
+      return {
+        ...state,
+        favorites: state.favorites.some((f) => f.id === action.payload.id)
+          ? state.favorites.filter((f) => f.id !== action.payload.id)
+          : [...state.favorites, action.payload],
       }
-      return { ...state, favorites: newFavorites }
+    case 'SET_FILTER':
+      return { ...state, filter: action.payload }
     default:
       return state
   }

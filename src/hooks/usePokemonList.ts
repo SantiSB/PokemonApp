@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useCallback } from 'react'
 import { usePokemonContext } from '@/state/PokemonContext'
 import { fetchPokemonDetails, fetchPokemonList } from '@/utils/pokemonService'
@@ -40,6 +41,10 @@ export const usePokemonList = () => {
     [dispatch],
   )
 
+  const filteredPokemons = state.pokemons.filter((pokemon) => {
+    return !state.filter || pokemon.name?.includes(state.filter)
+  })
+
   return {
     pokemons: state.pokemons,
     total: state.total,
@@ -47,5 +52,6 @@ export const usePokemonList = () => {
     favorites: state.favorites,
     handlePageChange,
     toggleFavorite,
+    filteredPokemons,
   }
 }

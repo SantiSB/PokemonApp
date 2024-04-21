@@ -6,12 +6,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function PokemonsList() {
-  const { pokemons, total, page, favorites, handlePageChange, toggleFavorite } =
-    usePokemonList()
+  const {
+    filteredPokemons,
+    total,
+    page,
+    favorites,
+    handlePageChange,
+    toggleFavorite,
+  } = usePokemonList()
 
   const totalPages = Math.ceil(total / 20)
-
-  console.log('favorites', favorites)
 
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
@@ -57,7 +61,7 @@ export default function PokemonsList() {
                 </tr>
               </thead>
               <tbody>
-                {pokemons.map((pokemon: Pokemon) => (
+                {filteredPokemons.map((pokemon: Pokemon) => (
                   <tr
                     key={pokemon.id}
                     className="text-center border-b dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900"
