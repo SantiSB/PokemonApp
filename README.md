@@ -52,7 +52,7 @@ Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
 2. Navega hasta el directorio del proyecto:
 
 ```bash
-cd pokemon-app
+cd PokemonApp
 ```
 
 3. Instala las dependencias:
