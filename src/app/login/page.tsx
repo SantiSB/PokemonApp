@@ -1,38 +1,12 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
 import Loading from '../loading'
+import useLogin from '@/hooks/useLogin'
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const router = useRouter()
-  const { login, isLoggedIn } = useAuth()
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/pokemons')
-    } else {
-      setLoading(false)
-    }
-  }, [isLoggedIn, router])
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    login(email, password)
-
-    setEmail('')
-    setPassword('')
-
-    if (localStorage.getItem('user')) {
-      router.push('/pokemons')
-    }
-  }
+  const { email, setEmail, password, setPassword, loading, handleSubmit } =
+    useLogin()
 
   if (loading) {
     return <Loading />

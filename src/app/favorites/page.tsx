@@ -45,7 +45,6 @@ export default function Favorites() {
                       </th>
                     </tr>
                   </thead>
-
                   <tbody>
                     {state.favorites.map((pokemon: Pokemon) => (
                       <tr
