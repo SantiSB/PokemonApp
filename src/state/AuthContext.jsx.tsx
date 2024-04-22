@@ -1,32 +1,13 @@
 'use client'
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react'
+import {
+  AuthContextType,
+  AuthProviderProps,
+  User,
+} from '@/types/authContextTypes'
+import React, { createContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-interface User {
-  id: string
-  email: string
-  password: string
-}
-
-interface AuthContextType {
-  user: User | null
-  login: (email: string, password: string) => void
-  logout: () => void
-  register: (email: string, password: string) => void
-  isLoggedIn: boolean
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
-
-interface AuthProviderProps {
-  children: ReactNode
-}
+export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null)
@@ -72,12 +53,4 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       {children}
     </AuthContext.Provider>
   )
-}
-
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider')
-  }
-  return context
 }

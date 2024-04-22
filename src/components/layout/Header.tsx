@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Press_Start_2P } from 'next/font/google'
 import ThemeToggleButton from '@/components/layout/ThemeToggleButton'
 import Link from 'next/link'
-import { useAuth } from '@/state/AuthContext.jsx'
+import { useAuth } from '@/hooks/useAuth'
 
 const font = Press_Start_2P({ weight: '400', subsets: ['latin'] })
 

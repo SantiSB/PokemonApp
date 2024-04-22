@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/state/AuthContext.jsx'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Index() {
   const router = useRouter()

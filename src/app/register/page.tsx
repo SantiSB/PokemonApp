@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/state/AuthContext.jsx'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Register() {
   const [email, setEmail] = useState('')
