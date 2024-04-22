@@ -4,7 +4,7 @@ Este repositorio contiene el código fuente de la Pokemon App, una aplicación d
 
 ## Video Demostrativo
 
-https://github.com/SantiSB/PokemonApp/assets/55597241/0660c343-9526-483f-9461-bb37e0343bbf
+https://github.com/SantiSB/PokemonApp/assets/55597241/ddcda9da-c38d-463a-b799-c58014e8f53c
 
 ## Mockups
 
