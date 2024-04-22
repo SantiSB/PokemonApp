@@ -24,10 +24,13 @@ A continuación se muestran algunos mockups de la aplicación:
 
 ## Tecnologías Utilizadas
 
+- Next.js
+- TypeScript
 - React
-- Node.js
 - PokéAPI
-- CSS/Bootstrap para el diseño
+- Tailwind CSS
+- ESLint
+- Prettier
 
 ## Instalación
 
@@ -60,7 +63,3 @@ npm run dev
 ## Uso
 
 Después de ejecutar la aplicación, abre tu navegador y ve a `http://localhost:3000` para empezar a usar la Pokemon App.
-
-
-## Tech Stack
-Este proyecto fue desarrollado con Next.js, TypeScript, React, TailwindCSS, ESLint, Prettier.
