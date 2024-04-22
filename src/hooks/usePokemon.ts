@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Pokemon } from '@/types/pokemonTypes'
-import { fetchPokemonById } from '@/utils/pokemonService'
+import { fetchPokemonById } from '@/services/pokemonService'
 
 function usePokemon(id: string) {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null)
