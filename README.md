@@ -2,6 +2,10 @@
 
 Este repositorio contiene el código fuente de la Pokemon App, una aplicación diseñada como solución a una prueba técnica. La aplicación permite a los usuarios explorar, buscar y visualizar detalles de Pokémon.
 
+## Deploy
+
+https://main--relaxed-nougat-49b9ea.netlify.app/
+
 ## Video Demostrativo
 
 https://github.com/SantiSB/PokemonApp/assets/55597241/ddcda9da-c38d-463a-b799-c58014e8f53c
