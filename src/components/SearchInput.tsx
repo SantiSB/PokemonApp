@@ -11,7 +11,7 @@ export default function SearchInput() {
 
   return (
     <form
-      className="max-w-md mx-auto mb-5"
+      className="max-w-md mx-auto mb-1"
       onSubmit={(e) => e.preventDefault()}
     >
       <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -20,7 +20,7 @@ export default function SearchInput() {
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
-            className="w-5 h-5 text-gray-500"
+            className="w-5 h-5 text-primary-50"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -35,7 +35,7 @@ export default function SearchInput() {
         </div>
         <input
           type="text"
-          className="block w-full pl-10 pr-4 py-2 text-sm border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg shadow-sm"
+          className="block w-full pl-10 pr-4 py-2 text-sm border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg shadow-sm bg-primary-800 dark:bg-primary-700"
           placeholder="Search Pokémon..."
           onChange={(e) => handleSearch(e.target.value)}
         />
