@@ -42,7 +42,7 @@ Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
 1. Clona el repositorio:
 
 ```bash
-  git clone https://github.com/tu-usuario/PokemonApp.git
+  git clone https://github.com/SantiSB/PokemonApp.git
 ```
 
 2. Navega hasta el directorio del proyecto:
