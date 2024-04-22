@@ -1,9 +1,11 @@
 import { ReactNode } from 'react'
+import { Pokemon } from './pokemonTypes'
 
 export interface User {
   id: string
   email: string
   password: string
+  favorites: Pokemon[]
 }
 
 export interface AuthContextType {

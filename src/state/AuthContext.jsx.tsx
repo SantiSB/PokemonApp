@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       alert('User already exists with that email.')
       return
     }
-    const newUser = { id: uuidv4(), email, password }
+    const newUser = { id: uuidv4(), email, password, favorites: [] }
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))
   }

@@ -2,13 +2,22 @@
 import { Action, State } from '@/types/pokemonContextTypes'
 import React, { createContext, useReducer, useContext, ReactNode } from 'react'
 
+const savedFavorites = JSON.parse(
+  localStorage.getItem('user') as string,
+).favorites
+
 const initialState: State = {
   pokemons: [],
   page: 1,
   total: 0,
-  favorites: [],
+  favorites: savedFavorites ? savedFavorites : [],
   filter: '',
 }
+
+console.log(
+  'user',
+  JSON.parse(localStorage.getItem('user') as string).favorites,
+)
 
 const pokemonReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -25,8 +34,12 @@ const pokemonReducer = (state: State, action: Action): State => {
           ? state.favorites.filter((f) => f.id !== action.payload.id)
           : [...state.favorites, action.payload],
       }
+    case 'CLEAN_FAVORITES':
+      return { ...state, favorites: [] }
     case 'SET_FILTER':
       return { ...state, filter: action.payload }
+    case 'SET_FAVORITES':
+      return { ...state, favorites: action.payload }
     default:
       return state
   }

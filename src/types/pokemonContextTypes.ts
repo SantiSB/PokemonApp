@@ -14,3 +14,5 @@ export type Action =
   | { type: 'SET_TOTAL'; payload: number }
   | { type: 'TOGGLE_FAVORITE'; payload: Pokemon }
   | { type: 'SET_FILTER'; payload: string }
+  | { type: 'CLEAN_FAVORITES' }
+  | { type: 'SET_FAVORITES'; payload: Pokemon[] }
