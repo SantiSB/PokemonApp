@@ -1,5 +1,7 @@
 'use client'
+import Error from '@/app/error'
 import Loading from '@/app/loading'
+import NotFound from '@/app/not-found'
 import usePokemon from '@/hooks/usePokemon'
 import Image from 'next/image'
 
@@ -8,8 +10,8 @@ export default function PokemonDetail({ params }: { params: { id: string } }) {
   const { pokemon, isLoading, error } = usePokemon(id)
 
   if (isLoading) return <Loading />
-  if (error) return <p>{error}</p>
-  if (!pokemon) return <p>No Pokémon found.</p>
+  if (error) return <Error error={error} />
+  if (!pokemon) return <NotFound />
 
   const renderStars = () => {
     const stars = []
