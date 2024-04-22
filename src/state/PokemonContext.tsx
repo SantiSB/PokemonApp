@@ -1,23 +1,18 @@
 'use client'
-import React, { createContext, useReducer, useContext, ReactNode } from 'react'
+import React, {
+  createContext,
+  useReducer,
+  useContext,
+  ReactNode,
+  useEffect,
+} from 'react'
 import { Action, State } from '@/types/pokemonContextTypes'
-
-const getUserFavorites = () => {
-  const userItem = localStorage.getItem('user')
-  if (userItem) {
-    const user = JSON.parse(userItem)
-    return user.favorites || []
-  }
-  return []
-}
-
-const savedFavorites = getUserFavorites()
 
 const initialState: State = {
   pokemons: [],
   page: 1,
   total: 0,
-  favorites: savedFavorites,
+  favorites: [],
   filter: '',
 }
 
@@ -59,6 +54,15 @@ export const PokemonProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(pokemonReducer, initialState)
+
+  useEffect(() => {
+    const userItem = localStorage.getItem('user')
+    if (userItem) {
+      const user = JSON.parse(userItem)
+      const favorites = user.favorites || []
+      dispatch({ type: 'SET_FAVORITES', payload: favorites })
+    }
+  }, [])
 
   return (
     <PokemonContext.Provider value={{ state, dispatch }}>
