@@ -1,6 +1,6 @@
 'use client'
-import { Action, State } from '@/types/pokemonContextTypes'
 import React, { createContext, useReducer, useContext, ReactNode } from 'react'
+import { Action, State } from '@/types/pokemonContextTypes'
 
 const savedFavorites = JSON.parse(
   localStorage.getItem('user') as string,
@@ -13,11 +13,6 @@ const initialState: State = {
   favorites: savedFavorites ? savedFavorites : [],
   filter: '',
 }
-
-console.log(
-  'user',
-  JSON.parse(localStorage.getItem('user') as string).favorites,
-)
 
 const pokemonReducer = (state: State, action: Action): State => {
   switch (action.type) {

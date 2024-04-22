@@ -1,8 +1,8 @@
 'use client'
+import { useEffect } from 'react'
+import { usePokemonList } from '@/hooks/usePokemonList'
 import PokemonsList from '@/components/PokemonsList'
 import SearchInput from '@/components/SearchInput'
-import { usePokemonList } from '@/hooks/usePokemonList'
-import { useEffect } from 'react'
 
 export default function Home() {
   const { loadFavorites } = usePokemonList()

@@ -1,10 +1,10 @@
 'use client'
+import Image from 'next/image'
 import Error from '@/app/error'
 import Loading from '@/app/loading'
 import NotFound from '@/app/not-found'
 import RenderStars from '@/components/RatingStarts'
 import usePokemon from '@/hooks/usePokemon'
-import Image from 'next/image'
 
 export default function PokemonDetail({ params }: { params: { id: string } }) {
   const { id } = params

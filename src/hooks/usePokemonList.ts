@@ -1,18 +1,16 @@
 'use client'
 import { useEffect, useCallback } from 'react'
+import { Pokemon } from '@/types/pokemonTypes'
+import { User } from '@/types/authContextTypes'
+import { useAuth } from './useAuth'
 import { usePokemonContext } from '@/state/PokemonContext'
 import { fetchPokemonDetails, fetchPokemonList } from '@/utils/pokemonService'
-import { Pokemon } from '@/types/pokemonTypes'
-import { useAuth } from './useAuth'
-import { User } from '@/types/authContextTypes'
 
 const TOTAL_PAGES = 20
 
 export const usePokemonList = () => {
   const { state, dispatch } = usePokemonContext()
   const { user } = useAuth()
-
-  console.log(user)
 
   const loadPokemon = useCallback(async () => {
     const { page } = state

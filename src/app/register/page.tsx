@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import Loading from '../loading'
 import { useRegister } from '@/hooks/useRegister'
+import Loading from '@/app/loading'
 
 export default function Register() {
   const {

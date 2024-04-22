@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import Loading from '../loading'
+import Loading from '@/app/loading'
 import useLogin from '@/hooks/useLogin'
 
 export default function Login() {

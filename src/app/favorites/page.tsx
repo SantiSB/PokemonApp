@@ -1,9 +1,9 @@
 'use client'
+import Image from 'next/image'
+import Link from 'next/link'
 import { usePokemonContext } from '@/state/PokemonContext'
 import { Pokemon } from '@/types/pokemonTypes'
-import Image from 'next/image'
 import { usePokemonList } from '@/hooks/usePokemonList'
-import Link from 'next/link'
 import FavoriteIcon from '@/components/assets/FavoriteIcon'
 
 export default function Favorites() {

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { Orbitron } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/state/ThemeContext'
 import { PokemonProvider } from '@/state/PokemonContext'
 import { AuthProvider } from '@/state/AuthContext.jsx'
+import Header from '@/components/layout/Header'
+import './globals.css'
 
 const font = Orbitron({ subsets: ['latin'] })
 
