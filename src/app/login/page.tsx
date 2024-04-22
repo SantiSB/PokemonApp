@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
+import Loading from '../loading'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -34,7 +35,7 @@ export default function Login() {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   return (

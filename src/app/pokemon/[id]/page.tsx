@@ -1,4 +1,5 @@
 'use client'
+import Loading from '@/app/loading'
 import usePokemon from '@/hooks/usePokemon'
 import Image from 'next/image'
 
@@ -6,7 +7,7 @@ export default function PokemonDetail({ params }: { params: { id: string } }) {
   const { id } = params
   const { pokemon, isLoading, error } = usePokemon(id)
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <Loading />
   if (error) return <p>{error}</p>
   if (!pokemon) return <p>No Pokémon found.</p>
 

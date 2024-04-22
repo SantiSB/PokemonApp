@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
+import Loading from '../loading'
 
 export default function Register() {
   const [email, setEmail] = useState('')
@@ -35,7 +36,7 @@ export default function Register() {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Loading />
   } else {
     return (
       <section className="bg-gray-50 dark:bg-gray-900 py-6">
