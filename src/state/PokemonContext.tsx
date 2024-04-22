@@ -1,20 +1,6 @@
 'use client'
+import { Action, State } from '@/types/pokemonContextTypes'
 import React, { createContext, useReducer, useContext, ReactNode } from 'react'
-import { Pokemon } from '@/types/pokemonTypes'
-
-type State = {
-  pokemons: Pokemon[]
-  page: number
-  total: number
-  favorites: Pokemon[]
-  filter: string
-}
-type Action =
-  | { type: 'SET_POKEMONS'; payload: Pokemon[] }
-  | { type: 'SET_PAGE'; payload: number }
-  | { type: 'SET_TOTAL'; payload: number }
-  | { type: 'TOGGLE_FAVORITE'; payload: Pokemon }
-  | { type: 'SET_FILTER'; payload: string }
 
 const initialState: State = {
   pokemons: [],
