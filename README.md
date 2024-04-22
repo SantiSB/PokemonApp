@@ -1,26 +1,66 @@
-1) Login / Register
+# Pokemon App
 
-- Validate email and password.
-- Next time the app is opened, if the user is already logged in, the home page should be displayed instead of the login form.
+Este repositorio contiene el código fuente de la Pokemon App, una aplicación diseñada como solución a una prueba técnica. La aplicación permite a los usuarios explorar, buscar y visualizar detalles de Pokémon.
 
-2) Navbar
+## Video Demostrativo
 
-- Home:
-    - Infinite Scroll Pokemon List.
-    - Display the initial 20 items from the API and request the next items through server-side pagination.
-    - Favorite button on each item, which persists between app launches.
-    - Autocomplete input (with suggestions as the user types)
-- Favorites:
-    - List of Favorite Pokemons
+[![Video Demo](http://img.youtube.com/vi/ID_DEL_VIDEO/0.jpg)](http://www.youtube.com/watch?v=ID_DEL_VIDEO)
 
-3) Pokemon Detail:
+Haz clic en la imagen para ver el video demostrativo de la aplicación en funcionamiento.
 
-- The user should be able to navigate to the detail page when they tap on each item in
-the home page list.
-- This page should open in a new page.
+## Mockups
 
-4) Unit Tests for application logic.
+A continuación se muestran algunos mockups de la aplicación:
 
-5) Styles:
+![Mockup 1](url_a_imagen_mockup_1)
+![Mockup 2](url_a_imagen_mockup_2)
+![Mockup 3](url_a_imagen_mockup_3)
 
-- Animate the transition between the home page and the detail page.
+## Características
+
+- **Exploración de Pokémon**: Navega a través de una lista de Pokémon disponibles.
+- **Búsqueda de Pokémon**: Busca Pokémon por nombre o tipo.
+- **Detalles de Pokémon**: Visualiza detalles como estadísticas, habilidades y evoluciones.
+
+## Tecnologías Utilizadas
+
+- React
+- Node.js
+- PokéAPI
+- CSS/Bootstrap para el diseño
+
+## Instalación
+
+Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio:
+
+```bash
+  git clone https://github.com/tu-usuario/PokemonApp.git
+```
+
+2. Navega hasta el directorio del proyecto:
+
+```bash
+cd pokemon-app
+```
+
+3. Instala las dependencias:
+   
+```bash
+npm install
+```
+
+4. Ejecuta la aplicación:
+
+```bash
+npm run dev
+```
+
+## Uso
+
+Después de ejecutar la aplicación, abre tu navegador y ve a `http://localhost:3000` para empezar a usar la Pokemon App.
+
+
+## Tech Stack
+Este proyecto fue desarrollado con Next.js, TypeScript, React, TailwindCSS, ESLint, Prettier.
