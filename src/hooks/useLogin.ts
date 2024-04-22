@@ -2,15 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
-
-interface UseLoginReturn {
-  email: string
-  setEmail: (value: string) => void
-  password: string
-  setPassword: (value: string) => void
-  loading: boolean
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-}
+import { UseLoginReturn } from '@/types/authContextTypes'
 
 export default function useLogin(): UseLoginReturn {
   const [email, setEmail] = useState<string>('')

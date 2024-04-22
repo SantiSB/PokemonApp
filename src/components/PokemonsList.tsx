@@ -13,9 +13,8 @@ export default function PokemonsList() {
     favorites,
     handlePageChange,
     toggleFavorite,
+    totalPages,
   } = usePokemonList()
-
-  const totalPages = Math.ceil(total / 20)
 
   return (
     <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">

@@ -1,5 +1,4 @@
 'use client'
-
 import { usePokemonContext } from '@/state/PokemonContext'
 
 export default function SearchInput() {

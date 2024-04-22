@@ -2,17 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
-
-interface UseRegisterFormOutput {
-  email: string
-  setEmail: (value: string) => void
-  password: string
-  setPassword: (value: string) => void
-  confirmPassword: string
-  setConfirmPassword: (value: string) => void
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-  loading: boolean
-}
+import { UseRegisterFormOutput } from '@/types/authContextTypes'
 
 export function useRegister(): UseRegisterFormOutput {
   const [email, setEmail] = useState('')

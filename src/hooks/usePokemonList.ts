@@ -4,6 +4,8 @@ import { usePokemonContext } from '@/state/PokemonContext'
 import { fetchPokemonDetails, fetchPokemonList } from '@/utils/pokemonService'
 import { Pokemon } from '@/types/pokemonTypes'
 
+const TOTAL_PAGES = 20
+
 export const usePokemonList = () => {
   const { state, dispatch } = usePokemonContext()
 
@@ -45,6 +47,8 @@ export const usePokemonList = () => {
     return !state.filter || pokemon.name?.includes(state.filter)
   })
 
+  const totalPages = Math.ceil(state.total / TOTAL_PAGES)
+
   return {
     pokemons: state.pokemons,
     total: state.total,
@@ -53,5 +57,6 @@ export const usePokemonList = () => {
     handlePageChange,
     toggleFavorite,
     filteredPokemons,
+    totalPages,
   }
 }
