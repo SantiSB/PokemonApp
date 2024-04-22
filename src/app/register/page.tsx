@@ -39,8 +39,8 @@ export default function Register() {
     return <Loading />
   } else {
     return (
-      <section className="bg-gray-50 dark:bg-gray-900 py-6">
-        <div className="flex flex-col items-center px-6 mx-auto md:h-screen lg:py-0">
+      <section className="bg-gray-50 dark:bg-gray-900 h-screen content-center">
+        <div className="flex flex-col items-center px-6 mx-auto">
           <Image
             alt="logo_pokemon"
             src={'/pokeball.svg'}
