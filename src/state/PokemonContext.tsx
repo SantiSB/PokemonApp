@@ -2,15 +2,22 @@
 import React, { createContext, useReducer, useContext, ReactNode } from 'react'
 import { Action, State } from '@/types/pokemonContextTypes'
 
-const savedFavorites = JSON.parse(
-  localStorage.getItem('user') as string,
-).favorites
+const getUserFavorites = () => {
+  const userItem = localStorage.getItem('user')
+  if (userItem) {
+    const user = JSON.parse(userItem)
+    return user.favorites || []
+  }
+  return []
+}
+
+const savedFavorites = getUserFavorites()
 
 const initialState: State = {
   pokemons: [],
   page: 1,
   total: 0,
-  favorites: savedFavorites ? savedFavorites : [],
+  favorites: savedFavorites,
   filter: '',
 }
 
