@@ -2,8 +2,8 @@
 import { Pokemon } from '@/types/pokemonTypes'
 import { usePokemonList } from '@/hooks/usePokemonList'
 import FavoriteIcon from './assets/FavoriteIcon'
-import Link from 'next/link'
 import Image from 'next/image'
+import { Link } from 'next-view-transitions'
 
 export default function PokemonsList() {
   const {
@@ -76,7 +76,6 @@ export default function PokemonsList() {
                     <td className="flex justify-center px-3 py-2 text-primary-800 dark:text-primary-200">
                       <Link
                         href={`/pokemon/${pokemon.id}`}
-                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Image
@@ -90,7 +89,6 @@ export default function PokemonsList() {
                     <td className="px-3 py-2 text-primary-800 dark:text-primary-200">
                       <Link
                         href={`/pokemon/${pokemon.id}`}
-                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         {pokemon.id}
@@ -99,7 +97,6 @@ export default function PokemonsList() {
                     <td className="px-3 py-2 text-primary-800 dark:text-primary-200">
                       <Link
                         href={`/pokemon/${pokemon.id}`}
-                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         {pokemon.name}
