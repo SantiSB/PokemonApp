@@ -40,7 +40,7 @@ export default function Header() {
               Favorites
             </Link>
             <Link
-              href={'/login'}
+              href="/login"
               onClick={logoutFunction}
               className="hover:text-white dark:hover:text-black transition-colors font-semibold"
             >
