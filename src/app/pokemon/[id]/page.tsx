@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Error from '@/app/error'
 import Loading from '@/app/loading'
 import NotFound from '@/app/not-found'
-import RenderStars from '@/components/RatingStarts'
+import RenderStars from '@/components/RatingStars'
 import usePokemon from '@/hooks/usePokemon'
 
 export default function PokemonDetail({ params }: { params: { id: string } }) {
