@@ -5,7 +5,7 @@ import {
   AuthProviderProps,
   User,
 } from '@/types/authContextTypes'
-import { v4 as uuidv4 } from 'uuid'
+import { login, logout, register } from '@/services/authContextService'
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
@@ -19,37 +19,37 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, [])
 
-  const login = (email: string, password: string) => {
-    const users = JSON.parse(localStorage.getItem('users') ?? '[]')
-    const foundUser = users.find(
-      (user: User) => user.email === email && user.password === password,
-    )
-    if (foundUser) {
-      localStorage.setItem('user', JSON.stringify(foundUser))
-      setUser(foundUser)
+  const handleLogin = (email: string, password: string) => {
+    const result = login(email, password)
+    if (result) {
+      setUser(result)
     }
   }
 
-  const logout = () => {
-    localStorage.removeItem('user')
+  const handleLogout = () => {
+    logout()
     setUser(null)
   }
 
-  const register = (email: string, password: string) => {
-    const users = JSON.parse(localStorage.getItem('users') ?? '[]')
-    if (users.some((user: User) => user.email === email)) {
-      alert('User already exists with that email.')
-      return
+  const handleRegister = (email: string, password: string) => {
+    const result = register(email, password)
+    if (result !== 'User already exists with that email.') {
+      console.log('Registered user:', result)
     }
-    const newUser = { id: uuidv4(), email, password, favorites: [] }
-    users.push(newUser)
-    localStorage.setItem('users', JSON.stringify(users))
   }
 
   const isLoggedIn = user !== null
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, isLoggedIn }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login: handleLogin,
+        logout: handleLogout,
+        register: handleRegister,
+        isLoggedIn,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )
