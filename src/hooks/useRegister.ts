@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
 import { UseRegisterFormOutput } from '@/types/authContextTypes'
+import { useAlert } from '@/state/AlertContext'
 
 export function useRegister(): UseRegisterFormOutput {
   const [email, setEmail] = useState('')
@@ -11,6 +12,7 @@ export function useRegister(): UseRegisterFormOutput {
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const { register, isLoggedIn } = useAuth()
+  const { showAlert } = useAlert()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -23,14 +25,21 @@ export function useRegister(): UseRegisterFormOutput {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (password !== confirmPassword) {
-      alert("Passwords don't match.")
+      showAlert("Passwords don't match.", 'error')
       return
     }
+
     register(email, password)
+
+    showAlert('¡Registrado exitosamente!', 'success')
+
+    setTimeout(() => {
+      router.push('/login')
+    }, 3000)
+
     setEmail('')
     setPassword('')
     setConfirmPassword('')
-    router.push('/login')
   }
 
   return {

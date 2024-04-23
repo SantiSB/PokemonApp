@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const handleRegister = (email: string, password: string) => {
     const result = register(email, password)
     if (result !== 'User already exists with that email.') {
-      console.log('Registered user:', result)
+      return
     }
   }
 

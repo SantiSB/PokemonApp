@@ -6,6 +6,8 @@ import { AuthProvider } from '@/state/AuthContext.jsx'
 import Header from '@/components/layout/Header'
 import { ViewTransitions } from 'next-view-transitions'
 import './globals.css'
+import { AlertProvider } from '@/state/AlertContext'
+import Alert from '@/components/Alert'
 
 const font = Orbitron({ subsets: ['latin'] })
 
@@ -24,15 +26,18 @@ export default function RootLayout({
       <html lang="en">
         <AuthProvider>
           <ThemeProvider>
-            <PokemonProvider>
-              <body
-                className={`${font.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50 min-h-screen min-w-full m-0 p-0 overflow-hidden flex flex-col`}
-              >
-                <Header />
-                <div className="mt-20"></div>
-                {children}
-              </body>
-            </PokemonProvider>
+            <AlertProvider>
+              <Alert />
+              <PokemonProvider>
+                <body
+                  className={`${font.className} bg-gray-50 dark:bg-primary-800 text-primary-900 dark:text-primary-50 min-h-screen min-w-full m-0 p-0 overflow-hidden flex flex-col`}
+                >
+                  <Header />
+                  <div className="mt-20"></div>
+                  {children}
+                </body>
+              </PokemonProvider>
+            </AlertProvider>
           </ThemeProvider>
         </AuthProvider>
       </html>
