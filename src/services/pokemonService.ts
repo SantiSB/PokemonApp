@@ -15,7 +15,7 @@ const handleResponse = async <T>(response: Response): Promise<T> => {
   return response.json() as Promise<T>
 }
 
-const buildUrl = (endpoint: string, params: UrlParams = {}): string => {
+export const buildUrl = (endpoint: string, params: UrlParams = {}): string => {
   const query = new URLSearchParams()
   for (const key in params) {
     query.append(key, params[key].toString())
