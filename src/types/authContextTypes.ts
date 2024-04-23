@@ -12,7 +12,7 @@ export interface AuthContextType {
   user: User | null
   login: (email: string, password: string) => void
   logout: () => void
-  register: (email: string, password: string) => void
+  register: (email: string, password: string) => RegisterResponse
   isLoggedIn: boolean
 }
 
@@ -38,4 +38,10 @@ export interface UseLoginReturn {
   setPassword: (value: string) => void
   loading: boolean
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+}
+
+export interface RegisterResponse {
+  success: boolean
+  message: string
+  user: User | null
 }

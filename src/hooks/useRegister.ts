@@ -29,7 +29,11 @@ export function useRegister(): UseRegisterFormOutput {
       return
     }
 
-    register(email, password)
+    const result = register(email, password)
+    if (!result.success) {
+      showAlert(result.message, 'error')
+      return
+    }
 
     showAlert('¡Registrado exitosamente!', 'success')
 

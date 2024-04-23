@@ -1,4 +1,4 @@
-import { User } from '@/types/authContextTypes'
+import { RegisterResponse, User } from '@/types/authContextTypes'
 import { v4 as uuidv4 } from 'uuid'
 
 export const login = (email: string, password: string) => {
@@ -17,13 +17,17 @@ export const logout = () => {
   localStorage.removeItem('user')
 }
 
-export const register = (email: string, password: string) => {
+export const register = (email: string, password: string): RegisterResponse => {
   const users = JSON.parse(localStorage.getItem('users') ?? '[]')
   if (users.some((user: User) => user.email === email)) {
-    return 'User already exists with that email.'
+    return {
+      success: false,
+      message: 'User already exists with that email.',
+      user: null,
+    }
   }
   const newUser = { id: uuidv4(), email, password, favorites: [] }
   users.push(newUser)
   localStorage.setItem('users', JSON.stringify(users))
-  return newUser
+  return { success: true, message: 'Registration successful.', user: newUser }
 }
