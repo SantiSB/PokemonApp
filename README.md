@@ -8,17 +8,20 @@ https://main--relaxed-nougat-49b9ea.netlify.app/
 
 ## Video Demostrativo
 
-https://github.com/SantiSB/PokemonApp/assets/55597241/ddcda9da-c38d-463a-b799-c58014e8f53c
 
 ## Mockups
-
-A continuación se muestran algunos mockups de la aplicación:
-
-![login](https://github.com/SantiSB/PokemonApp/assets/55597241/44cd89d7-867a-4388-b25e-034871826491)
-![register](https://github.com/SantiSB/PokemonApp/assets/55597241/31e2c425-ac8e-4265-9881-3229c7209a94)
-![home](https://github.com/SantiSB/PokemonApp/assets/55597241/910ad846-6480-40af-9227-7d3404624404)
-![favorites](https://github.com/SantiSB/PokemonApp/assets/55597241/ca3a632b-9e03-4fbb-9a25-00e7c670dfdf)
-![detail](https://github.com/SantiSB/PokemonApp/assets/55597241/d485e334-e7ea-46f6-8051-c5c8f8f896e4)
+![Login](https://github.com/SantiSB/PokemonApp/assets/55597241/d2e015f5-2793-4b8e-a547-403c245cbff6)
+![Register](https://github.com/SantiSB/PokemonApp/assets/55597241/43406f24-dd5f-4318-adfe-b5b046a95e7e)
+![Home](https://github.com/SantiSB/PokemonApp/assets/55597241/c70a217e-88c7-442d-95ae-3efde430af1f)
+![Favorites](https://github.com/SantiSB/PokemonApp/assets/55597241/c8e5e458-3653-411a-8b8c-3e1eaa99396f)
+![Detail](https://github.com/SantiSB/PokemonApp/assets/55597241/df98c21e-c795-415a-80b2-abb02c9a8928)
+![LoginDark](https://github.com/SantiSB/PokemonApp/assets/55597241/bc8c9fd4-a805-49db-84a5-48be071ed610)
+![RegisterDark](https://github.com/SantiSB/PokemonApp/assets/55597241/2a01fc9f-f9f6-4e22-9071-83b0e59b689e)
+![HomeDark](https://github.com/SantiSB/PokemonApp/assets/55597241/c0605b5a-3428-4e5f-a092-c48cecb3d814)
+![FavoritesDark](https://github.com/SantiSB/PokemonApp/assets/55597241/fc69a97f-160c-4d24-8ea2-ba48608844ba)
+![DetailDark](https://github.com/SantiSB/PokemonApp/assets/55597241/5d50a5d3-f856-4abe-993b-17ee102cc59d)
+![Responsive Auth](https://github.com/SantiSB/PokemonApp/assets/55597241/d42c6759-8dad-41fd-a8e4-d88afe30feab)
+![Responsive App](https://github.com/SantiSB/PokemonApp/assets/55597241/e13dd858-ad32-451c-828d-0d5968cbb0ed)
 
 ## Características
 
