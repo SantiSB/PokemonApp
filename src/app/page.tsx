@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/state/AuthContext.jsx'
 import Loading from '@/app/loading'
 
 export default function Index() {

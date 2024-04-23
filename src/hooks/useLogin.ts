@@ -1,7 +1,7 @@
 'ue client'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/state/AuthContext.jsx'
 import { UseLoginReturn } from '@/types/authContextTypes'
 
 export default function useLogin(): UseLoginReturn {
