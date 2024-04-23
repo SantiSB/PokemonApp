@@ -6,8 +6,8 @@ Este repositorio contiene el código fuente de la Pokemon App, una aplicación d
 
 https://main--relaxed-nougat-49b9ea.netlify.app/
 
-## Video Demostrativo
-
+## Video
+https://github.com/SantiSB/PokemonApp/assets/55597241/3be569eb-88c9-4e5f-a551-3b26b596d3fe
 
 ## Mockups
 ![Login](https://github.com/SantiSB/PokemonApp/assets/55597241/d2e015f5-2793-4b8e-a547-403c245cbff6)
@@ -27,10 +27,13 @@ https://main--relaxed-nougat-49b9ea.netlify.app/
 
 - **Login y Registro**: El usuario puede registrarse e iniciar sesion.
 - **Listado de Pokemons**: El usuario puede ver una lista scrolleable y paginada con los pokemones disponibles y un boton para agregar a favoritos.
-- **Listado de Pokemons Favorritos**: El usuario puede ver una lista con los Pokemons que agregó a favoritos.
+- **Filtro de busqueda y sugerencias de autocompletado**: El usuario puede filtrar la lista escribiendo el nombre del pokemon en un input que le mostrará sugerencias de autocompletado.
+- **Listado de Pokemons Favoritos**: El usuario puede ver una lista con los Pokemons que agregó a favoritos.
 - **Persistencia**: El usuario puede guardar sus pokemones favoritos y estos se guardarán en su sesion.
 - **Búsqueda de Pokémon**: El usuario puede buscar un pokemon por nombre.
 - **Detalles de Pokémon**: Visualiza detalles como estadísticas, habilidades y movimientos.
+- **View Transitions**: Transiciones de pagina para mejorar la experiencia de usuario.
+- **Tests Unitarios**
 
 ## Tecnologías Utilizadas
 
