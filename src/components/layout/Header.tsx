@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header
-      className={`${font.className} fixed top-0 left-0 z-10 flex justify-between items-center py-5 w-full px-5 lg:px-32 xl:px-40 bg-primary-800 dark:bg-primary-200 shadow-md text-primary-50 dark:text-primary-900`}
+      className={`${font.className} fixed top-0 left-0 z-10 flex justify-between items-center py-5 w-full px-5 lg:px-32 xl:px-40 bg-primary-400 dark:bg-primary-700 shadow-md text-black dark:text-white`}
     >
       <Link href="/">
         <Image
@@ -30,19 +30,19 @@ export default function Header() {
           priority
         />
       </Link>
-      <nav className="flex flex-row gap-x-4 text-xs sm:text-base">
+      <nav className="flex flex-row gap-x-8 text-xs sm:text-base">
         {isLoggedIn && (
           <>
             <Link
               href="/favorites"
-              className="hover:text-primary-200 dark:hover:text-primary-700 focus:text-primary-300 dark:focus:text-primary-800 transition-colors font-semibold"
+              className="hover:text-white dark:hover:text-black transition-colors font-semibold"
             >
               Favorites
             </Link>
             <Link
               href={'/login'}
               onClick={logoutFunction}
-              className="hover:text-primary-200 dark:hover:text-primary-700 focus:text-primary-300 dark:focus:text-primary-800 transition-colors font-semibold"
+              className="hover:text-white dark:hover:text-black transition-colors font-semibold"
             >
               Logout
             </Link>

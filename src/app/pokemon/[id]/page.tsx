@@ -15,7 +15,7 @@ export default function PokemonDetail({ params }: { params: { id: string } }) {
   if (!pokemon) return <NotFound />
 
   return (
-    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 h-screen">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
@@ -48,12 +48,9 @@ export default function PokemonDetail({ params }: { params: { id: string } }) {
                 <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
                   {pokemon.height} ft / {pokemon.weight} lbs
                 </p>
-                <a
-                  href="#"
-                  className="text-sm font-medium leading-none text-gray-900 underline hover:no-underline dark:text-white"
-                >
+                <p className="text-sm font-medium leading-none text-gray-900 dark:text-white">
                   {pokemon.moves?.length ?? 'unknown'} moves
-                </a>
+                </p>
               </div>
             </div>
 

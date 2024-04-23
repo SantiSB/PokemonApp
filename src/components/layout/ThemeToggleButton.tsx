@@ -5,7 +5,10 @@ const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <button onClick={toggleTheme} className="focus:outline-none">
+    <button
+      onClick={toggleTheme}
+      className="focus:outline-none hover:text-white dark:hover:text-black transition-colors"
+    >
       {theme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"

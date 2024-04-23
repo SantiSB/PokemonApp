@@ -13,16 +13,14 @@ export default function SearchInput() {
 
   return (
     <form
-      className="max-w-md mx-auto mb-1"
+      className="self-center mx-auto ml-auto max-w-80 mb-1 text-black "
       onSubmit={(e) => e.preventDefault()}
     >
-      <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
-        Search
-      </label>
+      <label className="mb-2 text-sm font-medium  sr-only ">Search</label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
-            className="w-5 h-5 text-primary-50"
+            className="w-5 h-5 dark:text-primary-50"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -38,19 +36,19 @@ export default function SearchInput() {
         <input
           list={inputValue ? 'pokemonList' : undefined}
           type="text"
-          className="block w-full pl-10 pr-4 py-2 text-sm border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg shadow-sm bg-primary-800 dark:bg-primary-700"
+          className="block w-full pl-10 pr-4 py-2 text-sm text-black dark:text-white border-primary-50 focus:ring-blue-500 focus:border-blue-500 rounded-lg shadow-sm bg-primary-400 dark:bg-primary-700 placeholder-gray-700 dark:placeholder-primary-50"
           placeholder="Search Pokémon..."
           value={inputValue}
           onChange={(e) => handleSearch(e.target.value)}
         />
+        {inputValue && (
+          <datalist id="pokemonList">
+            {state.pokemons.map((pokemon) => (
+              <option key={pokemon.id} value={pokemon.name ?? ''} />
+            ))}
+          </datalist>
+        )}
       </div>
-      {inputValue && (
-        <datalist id="pokemonList">
-          {state.pokemons.map((pokemon) => (
-            <option key={pokemon.id} value={pokemon.name ?? ''} />
-          ))}
-        </datalist>
-      )}
     </form>
   )
 }

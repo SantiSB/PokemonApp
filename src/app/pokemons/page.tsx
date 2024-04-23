@@ -12,7 +12,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="bg-gray-50 dark:bg-gray-900 py-1">
+    <main className="bg-gray-50 dark:bg-gray-900 py-5 h-screen">
       <SearchInput />
       <PokemonsList />
     </main>

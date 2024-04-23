@@ -17,22 +17,22 @@ export default function PokemonsList() {
   } = usePokemonList()
 
   return (
-    <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
+    <div className="px-4 mx-auto max-w-screen-2xl lg:px-12 pt-5">
       <div className="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
         <div className="text-xs sm:text-base flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
-          <div className="flex items-center flex-1 space-x-4">
+          <div className="flex items-center flex-1 space-x-4 dark:text-primary-50">
             <h5>
-              <span className="text-gray-500">All Pokemons: </span>
-              <span className="dark:text-white ">{total}</span>
+              <span>All Pokemons: </span>
+              <span>{total}</span>
             </h5>
             <h5>
-              <span className="text-gray-500">Favorite Pokemons: </span>
-              <span className="dark:text-white">{favorites.length}</span>
+              <span>Favorite Pokemons: </span>
+              <span>{favorites.length}</span>
             </h5>
           </div>
         </div>
         <div className="overflow-x-auto">
-          <div className="max-h-[400px] sm:max-h-[480px] overflow-y-auto ">
+          <div className="max-h-[350px] sm:max-h-[400px] overflow-y-auto ">
             <table className="w-full text-sm text-left dark:text-gray-400">
               <thead className="text-xs uppercase bg-primary-500 dark:bg-primary-700 sticky top-0">
                 <tr className="text-center">
@@ -68,7 +68,7 @@ export default function PokemonsList() {
                     <td className="px-3 py-2">
                       <button
                         onClick={() => toggleFavorite(pokemon)}
-                        className={`text-lg ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                        className={`text-lg ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-secondary-400 dark:text-accent-400' : 'text-gray-300'} hover:text-secondary-400 dark:hover:text-accent-400`}
                       >
                         <FavoriteIcon />
                       </button>
