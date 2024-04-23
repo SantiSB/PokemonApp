@@ -37,7 +37,7 @@ export default function PokemonsList() {
               <thead className="text-xs uppercase bg-primary-500 dark:bg-primary-700 sticky top-0">
                 <tr className="text-center">
                   <th scope="col" className="px-4 py-3 max-w-2 text-white">
-                    ★
+                    ❤
                   </th>
                   <th scope="col" className="px-4 py-3 text-white">
                     Image
