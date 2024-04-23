@@ -14,7 +14,7 @@ describe('Pokemon API service', () => {
   })
 
   describe('buildUrl', () => {
-    it('should construct a URL with query parameters', () => {
+    test('should construct a URL with query parameters', () => {
       const url = buildUrl(`${API_URL}`, {
         limit: 20,
         offset: 100,
@@ -22,20 +22,20 @@ describe('Pokemon API service', () => {
       expect(url).toBe(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=100`)
     })
 
-    it('should construct a URL with a Pokemon ID', () => {
+    test('should construct a URL with a Pokemon ID', () => {
       const pokemonId = '25'
       const url = buildUrl(`${API_URL}/${pokemonId}`)
       expect(url).toBe('https://pokeapi.co/api/v2/pokemon/25')
     })
 
-    it('should construct a URL without query parameters when none are provided', () => {
+    test('should construct a URL without query parameters when none are provided', () => {
       const url = buildUrl(`${API_URL}`)
       expect(url).toBe('https://pokeapi.co/api/v2/pokemon')
     })
   })
 
   describe('fetchPokemonList', () => {
-    it('should fetch pokemons with default pagination', async () => {
+    test('should fetch pokemons with default pagination', async () => {
       const mockApiResponse = {
         results: [
           { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
@@ -50,7 +50,7 @@ describe('Pokemon API service', () => {
       )
     })
 
-    it('should fetch pokemons with specified pagination', async () => {
+    test('should fetch pokemons with specified pagination', async () => {
       const mockApiResponse = {
         results: [
           { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
@@ -67,7 +67,7 @@ describe('Pokemon API service', () => {
   })
 
   describe('fetchPokemonDetails', () => {
-    it('should fetch details of a specific pokemon', async () => {
+    test('should fetch details of a specific pokemon', async () => {
       const mockPokemonDetails = {
         id: 1,
         name: 'bulbasaur',
@@ -84,7 +84,7 @@ describe('Pokemon API service', () => {
   })
 
   describe('fetchPokemonById', () => {
-    it('should fetch a pokemon by ID', async () => {
+    test('should fetch a pokemon by ID', async () => {
       const mockPokemon = {
         id: 1,
         name: 'bulbasaur',

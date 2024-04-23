@@ -19,5 +19,3 @@ export const calculateStars = (rating: number) => {
   }
   return 0
 }
-
-export default calculateStars

@@ -15,7 +15,7 @@ describe('Local Storage Functions', () => {
   })
 
   describe('updateLocalStorageUser', () => {
-    it('should save a single user to localStorage', () => {
+    test('should save a single user to localStorage', () => {
       const mockUser: User = {
         id: '1',
         email: 'test@example.com',
@@ -34,7 +34,7 @@ describe('Local Storage Functions', () => {
   })
 
   describe('updateLocalStorageUsers', () => {
-    it('should save multiple users to localStorage', () => {
+    test('should save multiple users to localStorage', () => {
       const mockUsers = [
         {
           id: '1',
@@ -61,7 +61,7 @@ describe('Local Storage Functions', () => {
   })
 
   describe('updateFavoriteForUser', () => {
-    it("should add or remove a pokemon from a user's favorites and update localStorage", () => {
+    test("should add or remove a pokemon from a user's favorites and update localStorage", () => {
       const user: User = {
         id: '1',
         email: 'user@example.com',
@@ -87,7 +87,7 @@ describe('Local Storage Functions', () => {
   })
 
   describe('updateFavoriteForUsers', () => {
-    it("should update a specific user's favorites in an array and update localStorage", () => {
+    test("should update a specific user's favorites in an array and update localStorage", () => {
       const users: User[] = [
         {
           id: '1',

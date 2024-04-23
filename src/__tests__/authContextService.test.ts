@@ -7,7 +7,7 @@ beforeEach(() => {
 
 describe('authService', () => {
   describe('login function', () => {
-    it('should authenticate a user if credentials match', () => {
+    test('should authenticate a user if credentials match', () => {
       const users = [
         {
           id: '123',
@@ -25,7 +25,7 @@ describe('authService', () => {
       )
     })
 
-    it('should return null if credentials do not match', () => {
+    test('should return null if credentials do not match', () => {
       const users = [
         {
           id: '123',
@@ -41,14 +41,14 @@ describe('authService', () => {
   })
 
   describe('logout function', () => {
-    it('should clear the user from localStorage', () => {
+    test('should clear the user from localStorage', () => {
       logout()
       expect(localStorage.removeItem).toHaveBeenCalledWith('user')
     })
   })
 
   describe('register function', () => {
-    it('should add a new user if email does not exist already', () => {
+    test('should add a new user if email does not exist already', () => {
       const newUser = register('new@gmail.com', 'password123')
       if (typeof newUser !== 'string') {
         expect(newUser.email).toBe('new@gmail.com')
@@ -62,7 +62,7 @@ describe('authService', () => {
       expect(storedUsers[0].email).toBe('new@gmail.com')
     })
 
-    it('should return error message if email already exists', () => {
+    test('should return error message if email already exists', () => {
       const existingUser = {
         id: '123',
         email: 'test@gmail.com',

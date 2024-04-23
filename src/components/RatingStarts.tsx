@@ -1,4 +1,4 @@
-import calculateStars from '@/utils/helpers'
+import { calculateStars } from '@/utils/helpers'
 import React from 'react'
 
 interface RenderStarsProps {
