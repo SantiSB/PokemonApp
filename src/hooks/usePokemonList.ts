@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useMemo } from 'react'
 import useLocalStorage from './useLocalStorage'
 import { usePokemonContext } from '@/state/PokemonContext'
 import { calculateTotalPages } from '@/utils/helpers'
@@ -9,6 +9,8 @@ import {
   fetchPokemonList,
 } from '@/services/pokemonService'
 import {
+  updateFavoriteForUser,
+  updateFavoriteForUsers,
   updateLocalStorageUser,
   updateLocalStorageUsers,
 } from '@/services/localStorageService'
@@ -50,32 +52,15 @@ export const usePokemonList = () => {
 
   const toggleFavorite = useCallback(
     (pokemon: Pokemon) => {
-      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon })
-
       if (user) {
-        const isFavorite = user.favorites.some(
-          (fav: Pokemon) => fav.id === pokemon.id,
-        )
-        user.favorites = isFavorite
-          ? user.favorites.filter((fav: Pokemon) => fav.id !== pokemon.id)
-          : [...user.favorites, pokemon]
-        updateLocalStorageUser(user)
+        updateFavoriteForUser(user, pokemon)
       }
 
-      const userIndex = users.findIndex((u) => u?.id === user?.id)
-      if (userIndex !== -1) {
-        const currentUser = users[userIndex]
-        const isFavorite = currentUser.favorites.some(
-          (fav: Pokemon) => fav.id === pokemon.id,
-        )
-        currentUser.favorites = isFavorite
-          ? currentUser.favorites.filter(
-              (fav: Pokemon) => fav.id !== pokemon.id,
-            )
-          : [...currentUser.favorites, pokemon]
-        users[userIndex] = currentUser
-        updateLocalStorageUsers(users)
+      if (users.length > 0 && user) {
+        updateFavoriteForUsers(users, user.id, pokemon)
       }
+
+      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon })
     },
     [dispatch, user, users],
   )
@@ -90,9 +75,11 @@ export const usePokemonList = () => {
     }
   }, [dispatch, user])
 
-  const filteredPokemons = state.pokemons.filter((pokemon) => {
-    return !state.filter || pokemon.name?.includes(state.filter)
-  })
+  const filteredPokemons = useMemo(() => {
+    return state.pokemons.filter((pokemon) => {
+      return !state.filter || pokemon.name?.includes(state.filter)
+    })
+  }, [state.pokemons, state.filter])
 
   const totalPages = calculateTotalPages(state.total, TOTAL_PAGES)
 
