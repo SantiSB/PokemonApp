@@ -5,6 +5,7 @@ import { usePokemonContext } from '@/state/PokemonContext'
 import { calculateTotalPages } from '@/utils/helpers'
 import { Pokemon } from '@/types/pokemonTypes'
 import {
+  fetchPokemonById,
   fetchPokemonDetails,
   fetchPokemonList,
 } from '@/services/pokemonService'
@@ -37,6 +38,20 @@ export const usePokemonList = () => {
     dispatch({ type: 'SET_TOTAL', payload: data.count })
   }, [state.page, dispatch])
 
+  const loadFavoriteDetails = useCallback(async () => {
+    if (state.favorites.length > 0) {
+      const favoriteDetailsPromises = state.favorites.map((id) =>
+        fetchPokemonById(id.toString()),
+      )
+      const favoriteDetails = await Promise.all(favoriteDetailsPromises)
+      dispatch({ type: 'SET_FAVORITES_DETAILS', payload: favoriteDetails })
+    }
+  }, [state.favorites, dispatch])
+
+  useEffect(() => {
+    loadFavoriteDetails()
+  }, [loadFavoriteDetails])
+
   useEffect(() => {
     loadPokemon()
   }, [loadPokemon])
@@ -49,16 +64,16 @@ export const usePokemonList = () => {
   )
 
   const toggleFavorite = useCallback(
-    (pokemon: Pokemon) => {
+    (pokemonId: number) => {
       if (user) {
-        updateFavoriteForUser(user, pokemon)
+        updateFavoriteForUser(user, pokemonId)
       }
 
       if (users.length > 0 && user) {
-        updateFavoriteForUsers(users, user.id, pokemon)
+        updateFavoriteForUsers(users, user.id, pokemonId)
       }
 
-      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemon })
+      dispatch({ type: 'TOGGLE_FAVORITE', payload: pokemonId })
     },
     [dispatch, user, users],
   )

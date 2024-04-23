@@ -9,11 +9,11 @@ export const updateLocalStorageUsers = (users: User[]) => {
   localStorage.setItem('users', JSON.stringify(users))
 }
 
-export const updateFavoriteForUser = (user: User, pokemon: Pokemon): void => {
-  const isFavorite = user.favorites.some((fav) => fav.id === pokemon.id)
+export const updateFavoriteForUser = (user: User, pokemonId: number): void => {
+  const isFavorite = user.favorites.some((fav) => fav === pokemonId)
   user.favorites = isFavorite
-    ? user.favorites.filter((fav) => fav.id !== pokemon.id)
-    : [...user.favorites, pokemon]
+    ? user.favorites.filter((fav) => fav !== pokemonId)
+    : [...user.favorites, pokemonId]
 
   localStorage.setItem('user', JSON.stringify(user))
 }
@@ -21,18 +21,18 @@ export const updateFavoriteForUser = (user: User, pokemon: Pokemon): void => {
 export const updateFavoriteForUsers = (
   users: User[],
   userId: string,
-  pokemon: Pokemon,
+  pokemonId: number,
 ): void => {
   const userIndex = users.findIndex(
     (u) => u.id.toString() === userId.toString(),
   )
   if (userIndex !== -1) {
     const isFavorite = users[userIndex].favorites.some(
-      (fav) => fav.id === pokemon.id,
+      (fav) => fav === pokemonId,
     )
     users[userIndex].favorites = isFavorite
-      ? users[userIndex].favorites.filter((fav) => fav.id !== pokemon.id)
-      : [...users[userIndex].favorites, pokemon]
+      ? users[userIndex].favorites.filter((fav) => fav !== pokemonId)
+      : [...users[userIndex].favorites, pokemonId]
 
     localStorage.setItem('users', JSON.stringify(users))
   }

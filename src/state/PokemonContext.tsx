@@ -13,6 +13,7 @@ const initialState: State = {
   page: 1,
   total: 0,
   favorites: [],
+  favoritesDetails: [],
   filter: '',
 }
 
@@ -25,11 +26,17 @@ const pokemonReducer = (state: State, action: Action): State => {
     case 'SET_TOTAL':
       return { ...state, total: action.payload }
     case 'TOGGLE_FAVORITE':
+      const pokemonId = action.payload
       return {
         ...state,
-        favorites: state.favorites.some((f) => f.id === action.payload.id)
-          ? state.favorites.filter((f) => f.id !== action.payload.id)
-          : [...state.favorites, action.payload],
+        favorites: state.favorites.includes(pokemonId)
+          ? state.favorites.filter((f) => f !== pokemonId)
+          : [...state.favorites, pokemonId],
+      }
+    case 'SET_FAVORITES_DETAILS':
+      return {
+        ...state,
+        favoritesDetails: action.payload,
       }
     case 'CLEAN_FAVORITES':
       return { ...state, favorites: [] }

@@ -10,6 +10,8 @@ export default function Favorites() {
   const { state } = usePokemonContext()
   const { favorites, toggleFavorite } = usePokemonList()
 
+  console.log('state', state.favoritesDetails)
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900 py-5 h-screen">
       <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
@@ -46,15 +48,15 @@ export default function Favorites() {
                     </tr>
                   </thead>
                   <tbody>
-                    {state.favorites.map((pokemon: Pokemon) => (
+                    {state.favoritesDetails.map((pokemon: Pokemon) => (
                       <tr
                         key={pokemon.id}
                         className="text-center border-b dark:border-primary-800 hover:bg-primary-50 dark:hover:bg-primary-900"
                       >
                         <td className="px-3 py-2">
                           <button
-                            onClick={() => toggleFavorite(pokemon)}
-                            className={`text-lg  ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-secondary-400 dark:text-accent-400' : 'text-gray-300'} hover:text-secondary-400 dark:hover:text-accent-400`}
+                            onClick={() => toggleFavorite(pokemon.id)}
+                            className={`text-lg  ${favorites.some((favorite: number) => favorite === pokemon.id) ? 'text-secondary-400 dark:text-accent-400' : 'text-gray-300'} hover:text-secondary-400 dark:hover:text-accent-400`}
                           >
                             <FavoriteIcon />
                           </button>
@@ -67,7 +69,9 @@ export default function Favorites() {
                           >
                             <Image
                               src={
-                                pokemon.image ? pokemon.image : '/pokeball.svg'
+                                pokemon.sprites?.front_default
+                                  ? pokemon.sprites?.front_default
+                                  : '/pokeball.svg'
                               }
                               alt={pokemon.name ?? ''}
                               width={50}
