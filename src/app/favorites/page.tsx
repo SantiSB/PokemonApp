@@ -72,6 +72,7 @@ export default function Favorites() {
                               alt={pokemon.name ?? ''}
                               width={50}
                               height={50}
+                              priority
                             />
                           </Link>
                         </td>

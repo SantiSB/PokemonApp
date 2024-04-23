@@ -27,6 +27,7 @@ export default function Header() {
           height={40}
           alt="Pokeball App - Logo"
           src="/pokeball.svg"
+          priority
         />
       </Link>
       <nav className="flex flex-row gap-x-4 text-xs sm:text-base">

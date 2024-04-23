@@ -28,6 +28,7 @@ export default function PokemonDetail({ params }: { params: { id: string } }) {
               alt={pokemon.name ?? ''}
               width={500}
               height={500}
+              priority
             />
           </div>
 

@@ -83,6 +83,7 @@ export default function PokemonsList() {
                           alt={pokemon.name ?? ''}
                           width={50}
                           height={50}
+                          priority
                         />
                       </Link>
                     </td>
