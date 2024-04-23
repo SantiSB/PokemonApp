@@ -11,8 +11,6 @@ import {
 import {
   updateFavoriteForUser,
   updateFavoriteForUsers,
-  updateLocalStorageUser,
-  updateLocalStorageUsers,
 } from '@/services/localStorageService'
 import { User } from '@/types/authContextTypes'
 
