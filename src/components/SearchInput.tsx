@@ -1,10 +1,13 @@
 'use client'
+import { useState } from 'react'
 import { usePokemonContext } from '@/state/PokemonContext'
 
 export default function SearchInput() {
-  const { dispatch } = usePokemonContext()
+  const { state, dispatch } = usePokemonContext()
+  const [inputValue, setInputValue] = useState('')
 
   const handleSearch = (search: string) => {
+    setInputValue(search)
     dispatch({ type: 'SET_FILTER', payload: search })
   }
 
@@ -33,12 +36,21 @@ export default function SearchInput() {
           </svg>
         </div>
         <input
+          list={inputValue ? 'pokemonList' : undefined}
           type="text"
           className="block w-full pl-10 pr-4 py-2 text-sm border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg shadow-sm bg-primary-800 dark:bg-primary-700"
           placeholder="Search Pokémon..."
+          value={inputValue}
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
+      {inputValue && (
+        <datalist id="pokemonList">
+          {state.pokemons.map((pokemon) => (
+            <option key={pokemon.id} value={pokemon.name ?? ''} />
+          ))}
+        </datalist>
+      )}
     </form>
   )
 }
