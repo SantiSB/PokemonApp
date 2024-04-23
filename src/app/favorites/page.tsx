@@ -54,7 +54,7 @@ export default function Favorites() {
                         <td className="px-3 py-2">
                           <button
                             onClick={() => toggleFavorite(pokemon)}
-                            className={`text-lg  ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-red-500' : 'text-gray-300'} hover:text-red-700`}
+                            className={`text-lg  ${favorites.some((favorite: Pokemon) => favorite.id === pokemon.id) ? 'text-secondary-400 dark:text-accent-400' : 'text-gray-300'} hover:text-secondary-400 dark:hover:text-accent-400`}
                           >
                             <FavoriteIcon />
                           </button>

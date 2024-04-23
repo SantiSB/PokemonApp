@@ -59,6 +59,9 @@ const config: Config = {
           900: '#330000',
         },
       },
+      transitionProperty: {
+        color: 'color',
+      },
     },
   },
   plugins: [],
