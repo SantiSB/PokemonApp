@@ -35,7 +35,7 @@ export function useRegister(): UseRegisterFormOutput {
       return
     }
 
-    showAlert('¡Registrado exitosamente!', 'success')
+    showAlert('Successfully registered!', 'success')
 
     setTimeout(() => {
       router.push('/login')

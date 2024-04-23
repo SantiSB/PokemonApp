@@ -34,6 +34,7 @@ https://github.com/SantiSB/PokemonApp/assets/55597241/3be569eb-88c9-4e5f-a551-3b
 - **Detalles de Pokémon**: Visualiza detalles como estadísticas, habilidades y movimientos.
 - **View Transitions**: Transiciones de pagina para mejorar la experiencia de usuario.
 - **Tests Unitarios**
+- **Diseño Responvise**
 
 ## Tecnologías Utilizadas
 

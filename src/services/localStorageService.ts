@@ -1,5 +1,4 @@
 import { User } from '@/types/authContextTypes'
-import { Pokemon } from '@/types/pokemonTypes'
 
 export const updateLocalStorageUser = (user: User) => {
   localStorage.setItem('user', JSON.stringify(user))
