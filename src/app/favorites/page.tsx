@@ -11,7 +11,7 @@ export default function Favorites() {
   const { favorites, toggleFavorite } = usePokemonList()
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-5">
+    <section className="bg-gray-50 dark:bg-gray-900 py-5 h-screen">
       <div className="px-4 mx-auto max-w-screen-2xl lg:px-12">
         <div className="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
           <div className="overflow-x-auto">
