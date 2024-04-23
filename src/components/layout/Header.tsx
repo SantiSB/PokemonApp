@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { Press_Start_2P } from 'next/font/google'
 import { useAuth } from '@/hooks/useAuth'
 import { usePokemonList } from '@/hooks/usePokemonList'
