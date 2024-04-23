@@ -23,7 +23,7 @@ export default function useLogin(): UseLoginReturn {
     event.preventDefault()
     setLoading(true)
 
-    await login(email, password)
+    login(email, password)
 
     setEmail('')
     setPassword('')
