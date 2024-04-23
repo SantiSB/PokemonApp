@@ -1,3 +1,4 @@
+import calculateStars from '@/utils/helpers'
 import React from 'react'
 
 interface RenderStarsProps {
@@ -5,20 +6,8 @@ interface RenderStarsProps {
 }
 
 const RenderStars: React.FC<RenderStarsProps> = ({ rating }) => {
+  const fullStars = calculateStars(rating)
   const stars = []
-  let fullStars = 0
-
-  if (rating >= 20 && rating <= 138) {
-    fullStars = 1
-  } else if (rating >= 139 && rating <= 256) {
-    fullStars = 2
-  } else if (rating >= 257 && rating <= 374) {
-    fullStars = 3
-  } else if (rating >= 375 && rating <= 492) {
-    fullStars = 4
-  } else if (rating >= 493) {
-    fullStars = 5
-  }
 
   for (let i = 0; i < 5; i++) {
     stars.push(
