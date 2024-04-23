@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/state/AuthContext.jsx'
 import { UseLoginReturn } from '@/types/authContextTypes'
+import { useAlert } from '@/state/AlertContext'
 
 export default function useLogin(): UseLoginReturn {
   const [email, setEmail] = useState<string>('')
@@ -10,6 +11,7 @@ export default function useLogin(): UseLoginReturn {
   const [loading, setLoading] = useState<boolean>(true)
   const router = useRouter()
   const { login, isLoggedIn } = useAuth()
+  const { showAlert } = useAlert()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -23,10 +25,16 @@ export default function useLogin(): UseLoginReturn {
     event.preventDefault()
     setLoading(true)
 
-    login(email, password)
+    const result = await login(email, password)
+    if (result.success) {
+      showAlert(result.message, 'success')
+      setEmail('')
+      setPassword('')
+      router.push('/pokemons')
+    } else {
+      showAlert(result.message, 'error')
+    }
 
-    setEmail('')
-    setPassword('')
     setLoading(false)
   }
 

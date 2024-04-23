@@ -10,9 +10,9 @@ export interface User {
 
 export interface AuthContextType {
   user: User | null
-  login: (email: string, password: string) => void
+  login: (email: string, password: string) => Promise<LoginResponse>
   logout: () => void
-  register: (email: string, password: string) => RegisterResponse
+  register: (email: string, password: string) => Promise<RegisterResponse>
   isLoggedIn: boolean
 }
 
@@ -41,6 +41,12 @@ export interface UseLoginReturn {
 }
 
 export interface RegisterResponse {
+  success: boolean
+  message: string
+  user: User | null
+}
+
+export interface LoginResponse {
   success: boolean
   message: string
   user: User | null

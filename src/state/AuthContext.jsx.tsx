@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react'
 import {
   AuthContextType,
   AuthProviderProps,
+  LoginResponse,
   User,
 } from '@/types/authContextTypes'
 import { login, logout, register } from '@/services/authContextService'
@@ -19,11 +20,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, [])
 
-  const handleLogin = (email: string, password: string) => {
-    const result = login(email, password)
-    if (result) {
-      setUser(result)
+  const handleLogin = async (
+    email: string,
+    password: string,
+  ): Promise<LoginResponse> => {
+    const result = await login(email, password)
+    if (result.success) {
+      setUser(result.user)
+    } else {
+      // Manejo del caso de fallo, como mostrar un mensaje de error.
+      // Nota: Este bloque no afecta el tipo de retorno de `handleLogin`.
     }
+    return result // Esto es crucial para asegurarte de que estás devolviendo un Promise<LoginResponse>
   }
 
   const handleLogout = () => {
@@ -31,8 +39,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null)
   }
 
-  const handleRegister = (email: string, password: string) => {
-    const result = register(email, password)
+  const handleRegister = async (email: string, password: string) => {
+    const result = await register(email, password)
     return result
   }
 

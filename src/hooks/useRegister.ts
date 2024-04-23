@@ -22,14 +22,14 @@ export function useRegister(): UseRegisterFormOutput {
     }
   }, [isLoggedIn, router])
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (password !== confirmPassword) {
       showAlert("Passwords don't match.", 'error')
       return
     }
 
-    const result = register(email, password)
+    const result = await register(email, password)
     if (!result.success) {
       showAlert(result.message, 'error')
       return
